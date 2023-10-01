@@ -1,0 +1,78 @@
+import math
+
+memory = 0
+
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        return "Division by zero is not allowed"
+    return x / y
+
+def exponentiate(x, y):
+    return x ** y
+
+def square_root(x):
+    if x < 0:
+        return "Square root of a negative number is not allowed"
+    return math.sqrt(x)
+
+while True:
+    print("Options:")
+    print("Enter 'add' for addition")
+    print("Enter 'subtract' for subtraction")
+    print("Enter 'multiply' for multiplication")
+    print("Enter 'divide' for division")
+    print("Enter 'exponentiate' for exponentiation")
+    print("Enter 'square root' for square root")
+    print("Enter 'memory' to view memory")
+    print("Enter 'clear' to clear memory")
+    print("Enter 'quit' to end the program")
+
+    user_input = input(": ")
+
+    if user_input == "quit":
+        break
+
+    if user_input in ("add", "subtract", "multiply", "divide", "exponentiate", "square root"):
+        if user_input == "square root":
+            num1 = float(input("Enter a number: "))
+            if num1 < 0:
+                print("Square root of a negative number is not allowed")
+            else:
+                print("Result: ", square_root(num1))
+        else:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+
+            if user_input == "add":
+                result = add(num1, num2)
+            elif user_input == "subtract":
+                result = subtract(num1, num2)
+            elif user_input == "multiply":
+                result = multiply(num1, num2)
+            elif user_input == "divide":
+                result = divide(num1, num2)
+            elif user_input == "exponentiate":
+                result = exponentiate(num1, num2)
+
+            print("Result: ", result)
+
+    elif user_input == "memory":
+        print("Memory: ", memory)
+    elif user_input == "clear":
+        memory = 0
+        print("Memory cleared")
+    else:
+        print("Invalid input")
+
+    # Store the result in memory
+    if user_input != "memory" and user_input != "clear":
+        memory = result
